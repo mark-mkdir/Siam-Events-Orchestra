@@ -1,0 +1,10 @@
+{
+  "description": "Enhance your website's visual appeal with a dynamic gradient background that shifts colors in response to mouse movement, captivating users and improving engagement.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
