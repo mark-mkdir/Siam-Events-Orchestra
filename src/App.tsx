@@ -17,6 +17,8 @@ import {
 
 import logoImage from './imports/image-3.png';
 import weddingImg from './wedding_string.jpg';
+import risingStarImg from './rising_star.jpg';
+import sounderImg from './sounder_international_music.jpg';
 import concertImg from './grand_event_concert.jpg';
 
 function Header() {
@@ -184,45 +186,76 @@ function Portfolio() {
 
 function Schedule() {
   const events = [
-    { date: "Oct 15", month: "2024", title: "Autumn Sonata Recital", location: "Grand Concert Hall, City Center", type: "Public" },
-    { date: "Nov 02", month: "2024", title: "Luxury Brand Launch", location: "The Peninsula Hotel", type: "Private" },
-    { date: "Dec 18", month: "2024", title: "Winter Wonderland Symphony", location: "National Theatre", type: "Public" },
+    { 
+      date: "14", 
+      month: "NOV", 
+      year: "2026",
+      title: "Rising Star Concert by Siam Events Orchestra", 
+      location: "Siam Ratchada Auditorium", 
+      type: "Ticket 750฿",
+      image: risingStarImg
+    },
+    { 
+      date: "24", 
+      month: "NOV", 
+      year: "2026",
+      title: "Sounder International Concert ", 
+      location: "Thao Suranaree Monument (Ya Mo) / Korat", 
+      type: "Public Event",
+      image: sounderImg
+    }
   ];
 
   return (
     <section id="schedule" className="py-24 bg-card/30 border-y border-border/50">
-      <div className="container mx-auto px-6 max-w-4xl">
+      <div className="container mx-auto px-6 max-w-5xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-serif font-bold mb-4">Upcoming Events</h2>
           <div className="w-16 h-1 bg-primary mx-auto"></div>
         </div>
         
-        <div className="space-y-4">
+        <div className="space-y-8">
           {events.map((event, i) => (
-            <div key={i} className="flex flex-col md:flex-row gap-6 p-6 border border-border bg-background hover:border-primary/50 transition-colors rounded-sm group">
-              <div className="flex-shrink-0 text-center md:text-left md:border-r md:border-border md:pr-6 min-w-[120px]">
-                <div className="text-primary font-bold text-2xl">{event.date}</div>
-                <div className="text-muted-foreground text-sm uppercase tracking-wider">{event.month}</div>
+            <div key={i} className="flex flex-col md:flex-row gap-6 p-6 border border-border bg-background hover:border-primary/50 transition-colors rounded-sm group items-center md:items-stretch shadow-sm">
+              
+              {/* โซนรูปโปสเตอร์ */}
+              <div className="w-full md:w-100 flex-shrink-0 overflow-hidden rounded-sm border border-border/30 bg-muted/30 flex items-center justify-center">
+                <img 
+                  src={event.image} 
+                  alt={event.title} 
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <div className="flex-grow">
-                <div className="flex items-center gap-3 mb-1">
-                  <h3 className="text-xl font-serif font-bold group-hover:text-primary transition-colors">{event.title}</h3>
-                  <span className={`text-xs px-2 py-1 rounded-sm border ${event.type === 'Private' ? 'border-border text-muted-foreground' : 'border-primary/30 text-primary bg-primary/10'}`}>
+
+              {/* โซนวันที่ */}
+              <div className="flex-shrink-0 text-center md:text-left md:border-r md:border-border md:pr-6 md:min-w-[120px] flex flex-col justify-center py-4 md:py-0">
+                <div className="text-primary font-bold text-5xl">{event.date}</div>
+                <div className="text-muted-foreground text-sm uppercase tracking-wider font-medium mt-1">{event.month} {event.year}</div>
+              </div>
+              
+              {/* โซนรายละเอียดงานและปุ่ม */}
+              <div className="flex-grow flex flex-col justify-center">
+                <div className="flex items-center gap-3 mb-3">
+                  <h3 className="text-2xl font-serif font-bold group-hover:text-primary transition-colors leading-tight">{event.title}</h3>
+                </div>
+                <div className="flex items-center text-muted-foreground gap-2 mb-4">
+                  <Calendar size={16} className="flex-shrink-0" />
+                  <span className="text-sm md:text-base">{event.location}</span>
+                </div>
+                <div className="mb-6">
+                  <span className="text-xs px-3 py-1.5 rounded-sm border border-primary/30 text-primary bg-primary/5 font-medium inline-block">
                     {event.type}
                   </span>
                 </div>
-                <div className="flex items-center text-muted-foreground gap-2">
-                  <Calendar size={14} />
-                  <span className="text-sm">{event.location}</span>
+                
+                {/* ย้ายโซนปุ่มมาไว้ตรงนี้ (ใต้ Type) */}
+                <div>
+                  <button className="w-full md:w-auto px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors rounded-sm text-sm font-medium whitespace-nowrap">
+                    More Info
+                  </button>
                 </div>
               </div>
-              <div className="flex items-center">
-                {event.type === 'Public' && (
-                  <button className="w-full md:w-auto px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors rounded-sm text-sm font-medium">
-                    Tickets
-                  </button>
-                )}
-              </div>
+              
             </div>
           ))}
         </div>
