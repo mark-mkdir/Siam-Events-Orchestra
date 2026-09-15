@@ -17,7 +17,10 @@ import {
   BookOpen,
   Menu,
   X,
-  ArrowLeft
+  ArrowLeft, 
+  MessageCircle, 
+  Heart, 
+  Send
 } from 'lucide-react';
 
 import logoImage from './imports/image-3.png';
@@ -402,7 +405,32 @@ function Contact() {
                   <a href="mailto:contact@siameventsorchestra.com" className="text-muted-foreground hover:text-primary transition-colors">contact@siameventsorchestra.com</a>
                 </div>
               </div>
+
+              <div className="flex items-start gap-4">
+                <MessageCircle className="text-primary mt-1" size={20} />
+                <div>
+                  <div className="font-medium text-foreground">LINE</div>
+                  <a href="https://line.me/ti/p/YOUR_LINE_ID" className="text-muted-foreground hover:text-primary transition-colors">Elitesscat</a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <Heart className="text-primary mt-1" size={20} />
+                <div>
+                  <div className="font-medium text-foreground">Instagram</div>
+                  <a href="https://instagram.com/siameventsorchestra" className="text-muted-foreground hover:text-primary transition-colors">Kornkoke</a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <Send className="text-primary mt-1" size={20} />
+                <div>
+                  <div className="font-medium text-foreground">Facebook</div>
+                  <a href="https://facebook.com/siameventsorchestra" className="text-muted-foreground hover:text-primary transition-colors">Siam Events Orchestra</a>
+                </div>
+              </div>
             </div>
+
             
             <div className="mt-12">
               <div className="font-medium mb-4">Follow Us</div>
