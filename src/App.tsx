@@ -1,4 +1,6 @@
 // App.tsx
+import { useState } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import { FlowingBackground } from './components/FlowingBackground';
 import { 
   Music, 
@@ -12,7 +14,10 @@ import {
   Globe,
   Radio,
   Share2,
-  BookOpen
+  BookOpen,
+  Menu,
+  X,
+  ArrowLeft
 } from 'lucide-react';
 
 import logoImage from './imports/image-3.png';
@@ -21,27 +26,63 @@ import risingStarImg from './rising_star.jpg';
 import sounderImg from './sounder_international_music.jpg';
 import concertImg from './grand_event_concert.jpg';
 
+import PortfolioPage from './pages/PortfolioPage';
+import EventDetailsPage from './pages/EventDetailsPage';
+
+// ==================== HEADER ====================
 function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-      <div className="container mx-auto px-6 h-24 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/60 shadow-sm">
+      <div className="container mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
+        
+        {/* โซนโลโก้ */}
         <div className="flex items-center">
-          <img src={logoImage} alt="Siam Events Orchestra Logo" className="h-16 md:h-20 w-auto object-contain" />
+          <img src={logoImage} alt="Siam Events Orchestra Logo" className="h-14 md:h-16 w-auto object-contain" />
         </div>
+        
+        {/* โซนเมนูสำหรับ Desktop */}
         <nav className="hidden md:flex space-x-8 text-sm font-medium text-muted-foreground">
           <a href="#services" className="hover:text-primary transition-colors">Home</a>
           <a href="#portfolio" className="hover:text-primary transition-colors">เพลงที่บรรเลง</a>
           <a href="#schedule" className="hover:text-primary transition-colors">ผลงาน</a>
           <a href="#about" className="hover:text-primary transition-colors">ติดต่อ</a>
         </nav>
-        <a href="#contact" className="px-5 py-2.5 bg-primary text-primary-foreground font-medium text-sm rounded-sm hover:bg-accent transition-colors">
-          Book Now
-        </a>
+        
+        {/* โซนปุ่ม Book Now (Desktop) และปุ่มเมนู (Mobile) */}
+        <div className="flex items-center gap-4">
+          <a href="#contact" className="hidden md:inline-flex px-6 py-2.5 bg-primary text-primary-foreground font-medium text-sm rounded-sm hover:bg-accent transition-colors shadow-sm">
+            Book Now
+          </a>
+          
+          {/* ปุ่ม Hamburger สำหรับจอมือถือ */}
+          <button 
+            className="md:hidden text-foreground p-2 focus:outline-none"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
+
+      {/* โซนเมนูที่กางออกสำหรับ Mobile */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg py-4 px-6 flex flex-col space-y-4">
+          <a href="#services" onClick={() => setIsMobileMenuOpen(false)} className="text-foreground hover:text-primary font-medium py-2 border-b border-border/50">Home</a>
+          <a href="#portfolio" onClick={() => setIsMobileMenuOpen(false)} className="text-foreground hover:text-primary font-medium py-2 border-b border-border/50">เพลงที่บรรเลง</a>
+          <a href="#schedule" onClick={() => setIsMobileMenuOpen(false)} className="text-foreground hover:text-primary font-medium py-2 border-b border-border/50">ผลงาน</a>
+          <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="text-foreground hover:text-primary font-medium py-2 border-b border-border/50">ติดต่อ</a>
+          <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-5 py-3 bg-primary text-primary-foreground font-medium text-center rounded-sm hover:bg-accent transition-colors">
+            Book Now
+          </a>
+        </div>
+      )}
     </header>
   );
 }
 
+// ==================== HERO ====================
 function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
@@ -63,9 +104,9 @@ function Hero() {
           <a href="#services" className="px-8 py-4 bg-primary text-primary-foreground font-medium rounded-sm hover:bg-accent transition-all text-center">
             รูปแบบวงดนตรี
           </a>
-          <a href="#portfolio" className="px-8 py-4 bg-transparent border border-primary text-primary font-medium rounded-sm hover:bg-primary/10 transition-all text-center flex items-center justify-center gap-2">
+          <Link to="/portfolio" className="px-8 py-4 bg-transparent border border-primary text-primary font-medium rounded-sm hover:bg-primary/10 transition-all text-center flex items-center justify-center gap-2">
             <PlayCircle size={20} /> ชมผลงาน
-          </a>
+          </Link>
         </div>
       </div>
       
@@ -76,6 +117,7 @@ function Hero() {
   );
 }
 
+// ==================== SERVICES ====================
 function Services() {
   const services = [
     {
@@ -134,6 +176,7 @@ function Services() {
   );
 }
 
+// ==================== PORTFOLIO ====================
 function Portfolio() {
   return (
     <section id="portfolio" className="py-24">
@@ -143,9 +186,9 @@ function Portfolio() {
             <h2 className="text-4xl font-serif font-bold mb-4">Past Performances</h2>
             <div className="w-16 h-1 bg-primary"></div>
           </div>
-          <a href="#" className="text-primary hover:text-accent font-medium mt-4 md:mt-0 flex items-center gap-2 transition-colors">
+          <Link to="/portfolio" className="text-primary hover:text-accent font-medium mt-4 md:mt-0 flex items-center gap-2 transition-colors">
             View All <ChevronDown className="-rotate-90" size={16} />
-          </a>
+          </Link>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -184,9 +227,11 @@ function Portfolio() {
   );
 }
 
+// ==================== SCHEDULE ====================
 function Schedule() {
   const events = [
     { 
+      id: 1,
       date: "14", 
       month: "NOV", 
       year: "2026",
@@ -196,6 +241,7 @@ function Schedule() {
       image: risingStarImg
     },
     { 
+      id: 2,
       date: "24", 
       month: "NOV", 
       year: "2026",
@@ -250,9 +296,9 @@ function Schedule() {
                 
                 {/* ย้ายโซนปุ่มมาไว้ตรงนี้ (ใต้ Type) */}
                 <div>
-                  <button className="w-full md:w-auto px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors rounded-sm text-sm font-medium whitespace-nowrap">
+                  <Link to={`/event/${event.id}`} className="w-full md:w-auto px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors rounded-sm text-sm font-medium whitespace-nowrap inline-block text-center">
                     More Info
-                  </button>
+                  </Link>
                 </div>
               </div>
               
@@ -264,6 +310,7 @@ function Schedule() {
   );
 }
 
+// ==================== ABOUT ====================
 function About() {
   return (
     <section id="about" className="py-24 overflow-hidden">
@@ -313,6 +360,7 @@ function About() {
   );
 }
 
+// ==================== SPONSORS ====================
 function Sponsors() {
   return (
     <section className="py-20 bg-primary text-primary-foreground">
@@ -333,6 +381,7 @@ function Sponsors() {
   );
 }
 
+// ==================== CONTACT ====================
 function Contact() {
   return (
     <section id="contact" className="py-24 relative">
@@ -405,6 +454,7 @@ function Contact() {
   );
 }
 
+// ==================== FOOTER ====================
 function Footer() {
   return (
     <footer className="py-12 border-t border-border bg-background/90">
@@ -433,7 +483,8 @@ function Footer() {
   );
 }
 
-function App() {
+// ==================== HOME PAGE ====================
+function HomePage() {
   return (
     <div className="min-h-screen text-foreground relative selection:bg-primary/30 selection:text-primary">
       <FlowingBackground />
@@ -449,6 +500,17 @@ function App() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+// ==================== MAIN APP ====================
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/portfolio" element={<PortfolioPage />} />
+      <Route path="/event/:eventId" element={<EventDetailsPage />} />
+    </Routes>
   );
 }
 
