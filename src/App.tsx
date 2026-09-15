@@ -47,7 +47,7 @@ function Header() {
           <a href="#services" className="hover:text-primary transition-colors">Home</a>
           <a href="#portfolio" className="hover:text-primary transition-colors">เพลงที่บรรเลง</a>
           <a href="#schedule" className="hover:text-primary transition-colors">ผลงาน</a>
-          <a href="#about" className="hover:text-primary transition-colors">ติดต่อ</a>
+          <a href="#contact" className="hover:text-primary transition-colors">ติดต่อ</a>
         </nav>
         
         {/* โซนปุ่ม Book Now (Desktop) และปุ่มเมนู (Mobile) */}
