@@ -410,7 +410,7 @@ function Contact() {
                 <MessageCircle className="text-primary mt-1" size={20} />
                 <div>
                   <div className="font-medium text-foreground">LINE</div>
-                  <a href="https://line.me/ti/p/YOUR_LINE_ID" className="text-muted-foreground hover:text-primary transition-colors">Elitesscat</a>
+                  <a href="https://line.me/ti/p/Elitesscat" className="text-muted-foreground hover:text-primary transition-colors">Elitesscat</a>
                 </div>
               </div>
 
@@ -418,7 +418,7 @@ function Contact() {
                 <Heart className="text-primary mt-1" size={20} />
                 <div>
                   <div className="font-medium text-foreground">Instagram</div>
-                  <a href="https://instagram.com/siameventsorchestra" className="text-muted-foreground hover:text-primary transition-colors">Kornkoke</a>
+                  <a href="https://www.instagram.com/kornkoke/?hl=en" className="text-muted-foreground hover:text-primary transition-colors">Kornkoke</a>
                 </div>
               </div>
 
@@ -426,7 +426,7 @@ function Contact() {
                 <Send className="text-primary mt-1" size={20} />
                 <div>
                   <div className="font-medium text-foreground">Facebook</div>
-                  <a href="https://facebook.com/siameventsorchestra" className="text-muted-foreground hover:text-primary transition-colors">Siam Events Orchestra</a>
+                  <a href="https://www.facebook.com/profile.php?id=61586794614205" className="text-muted-foreground hover:text-primary transition-colors">Siam Events Orchestra</a>
                 </div>
               </div>
             </div>
